@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Жоба туралы — QazaqTanu</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap');
+    
+    body {
+      font-family: 'Inter', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f8f9ff;
+      color: #1a1a1a;
+      line-height: 1.7;
+    }
+    header {
+      padding: 18px 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: white;
+      box-shadow: 0 2px 15px rgba(0,0,0,0.08);
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+    }
+    .logo { font-size: 28px; font-weight: 900; color: #0066ff; text-decoration: none; }
+    nav a { margin: 0 20px; text-decoration: none; color: #333; font-weight: 600; }
+    .btn-group a {
+      padding: 12px 28px;
+      border-radius: 50px;
+      font-weight: 700;
+      text-decoration: none;
+    }
+    .btn-login { background: transparent; color: #0066ff; border: 2.5px solid #0066ff; }
+    .btn-start { background: #ff5722; color: white; }
+
+    .content {
+      max-width: 1100px;
+      margin: 120px auto 80px;
+      padding: 0 5%;
+    }
+    h1 { font-size: 3.2rem; text-align: center; margin-bottom: 60px; font-weight: 900; }
+    h2 { font-size: 2.2rem; margin: 50px 0 25px; color: #0066ff; }
+    p { font-size: 1.15rem; color: #444; margin-bottom: 25px; }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 30px;
+      margin: 60px 0;
+    }
+    .feature-card {
+      background: white;
+      padding: 35px;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    }
+    footer {
+      background: #1a1a1a;
+      color: white;
+      text-align: center;
+      padding: 60px 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <a href="index.html" class="logo">QazaqTanu</a>
+    <nav>
+      <a href="index.html">Басты бет</a>
+      <a href="about.html">Жоба туралы</a>
+      <a href="login.html">Кіру</a>
+    </nav>
+    <div class="btn-group">
+      <a href="login.html" class="btn-group btn-login">Кіру</a>
+      <a href="https://t.me/qazaqtanu_bot" target="_blank" class="btn-group btn-start">Ботқа өту</a>
+    </div>
+  </header>
+
+  <div class="content">
+    <h1>Жоба туралы</h1>
+    
+    <h2>Біздің миссия</h2>
+    <p>QazaqTanu — қазақ тілін, тарихын және мәдениетін цифрлық форматта дәріптеуге арналған бірегей платформа.</p>
+    <p>Біз тіл үйренуді кедергі емес, күнделікті қызықты әдетке айналдыруды мақсат етеміз.</p>
+
+    <h2>Негізгі функциялар</h2>
+    <div class="features">
+      <div class="feature-card">
+        <h3>📇 Карточкалар</h3>
+        <p>Көрнекі құралдар арқылы сөздік қорды байыту.</p>
+      </div>
+      <div class="feature-card">
+        <h3>🎮 Ойындар</h3>
+        <p>Интерактивті кроссвордтар мен викториналар.</p>
+      </div>
+      <div class="feature-card">
+        <h3>💬 Диалогтар</h3>
+        <p>Нақты өмірдегі жағдайларды аудиомен үйрену.</p>
+      </div>
+    </div>
+
+    <h2>Мәдени интеграция</h2>
+    <p>Тіл — бұл тек қарым-қатынас құралы емес, бұл халықтың жаны. Біз ботымызда тілді үйрете отырып, қазақ елінің кең даласы мен бай тарихын таныстырамыз.</p>
+
+    <h2>Болашақ жоспарлар</h2>
+    <ul style="font-size: 1.15rem; line-height: 2; color: #444;">
+      <li>AI Mentor — жасанды интеллект арқылы тілді талдау</li>
+      <li>Толыққанды мобильді қосымша (App Store / Play Market)</li>
+      <li>Тіл үйренушілердің жабық қауымдастығы (Community)</li>
+    </ul>
+  </div>
+
+  <footer>
+    <p style="font-size: 1.8rem; margin-bottom: 10px;">QazaqTanu</p>
+    <p>Қазақ тілін, тарихын және мәдениетін бірге дамайық!</p>
+    <p style="margin-top: 40px; opacity: 0.7;">© 2026 QazaqTanu. Барлық құқықтар қорғалған.</p>
+  </footer>
+
+</body>
+</html>

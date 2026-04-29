@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Кіру / Тіркелу — QazaqTanu</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap');
+    
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, #e3f2fd, #f3e5f5);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0;
+      padding: 20px;
+    }
+    .container {
+      background: white;
+      padding: 50px 40px;
+      border-radius: 24px;
+      box-shadow: 0 15px 50px rgba(0,0,0,0.12);
+      max-width: 440px;
+      width: 100%;
+    }
+    h1 { text-align: center; margin-bottom: 10px; color: #0066ff; font-size: 2.2rem; }
+    .subtitle { text-align: center; color: #666; margin-bottom: 35px; }
+
+    .tab {
+      display: flex;
+      background: #f5f5f5;
+      border-radius: 12px;
+      padding: 6px;
+      margin-bottom: 30px;
+    }
+    .tab button {
+      flex: 1;
+      padding: 14px;
+      border: none;
+      background: transparent;
+      font-weight: 600;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .tab button.active {
+      background: white;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+      color: #ff5722;
+    }
+
+    input {
+      width: 100%;
+      padding: 16px;
+      margin: 10px 0;
+      border: 1px solid #ddd;
+      border-radius: 12px;
+      font-size: 1.05rem;
+    }
+    .btn {
+      width: 100%;
+      padding: 16px;
+      background: #ff5722;
+      color: white;
+      border: none;
+      border-radius: 50px;
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-top: 20px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .btn:hover { background: #ff7043; }
+
+    .message {
+      margin-top: 20px;
+      padding: 15px;
+      border-radius: 12px;
+      text-align: center;
+      font-weight: 600;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>QazaqTanu</h1>
+    <p class="subtitle">Тіл үйренудің болашағы</p>
+
+    <div class="tab">
+      <button class="active" id="login-tab">Кіру</button>
+      <button id="register-tab">Тіркелу</button>
+    </div>
+
+    <!-- Форма входа -->
+    <div id="login-form">
+      <input type="email" id="login-email" placeholder="Email немесе телефон" required>
+      <input type="password" id="login-password" placeholder="Құпия сөз" required>
+      <button class="btn" onclick="handleLogin()">Кіру</button>
+      <p style="text-align:center; margin-top:15px; font-size:0.95rem;">
+        <a href="#" style="color:#0066ff;">Құпия сөзді ұмыттыңыз ба?</a>
+      </p>
+    </div>
+
+    <!-- Форма регистрации -->
+    <div id="register-form" style="display:none;">
+      <input type="text" id="reg-name" placeholder="Аты-жөні" required>
+      <input type="email" id="reg-email" placeholder="Email" required>
+      <input type="tel" id="reg-phone" placeholder="Телефон нөмірі" required>
+      <input type="password" id="reg-password" placeholder="Құпия сөз (кемінде 6 таңба)" required>
+      <button class="btn" onclick="handleRegister()">Тіркелу</button>
+    </div>
+
+    <div id="success-message" class="message" style="background:#e8f5e9; color:#2e7d32;"></div>
+
+    <div style="text-align:center; margin-top:30px;">
+      <a href="index.html" style="color:#0066ff; text-decoration:none;">← Басты бетке оралу</a>
+    </div>
+  </div>
+
+  <script>
+    const loginTab = document.getElementById('login-tab');
+    const registerTab = document.getElementById('register-tab');
+    const loginForm = document.getElementById('login-form');
+    const registerForm = document.getElementById('register-form');
+    const successMsg = document.getElementById('success-message');
+
+    function showTab(tab) {
+      if (tab === 'login') {
+        loginForm.style.display = 'block';
+        registerForm.style.display = 'none';
+        loginTab.classList.add('active');
+        registerTab.classList.remove('active');
+      } else {
+        loginForm.style.display = 'none';
+        registerForm.style.display = 'block';
+        loginTab.classList.remove('active');
+        registerTab.classList.add('active');
+      }
+      successMsg.style.display = 'none';
+    }
+
+    loginTab.onclick = () => showTab('login');
+    registerTab.onclick = () => showTab('register');
+
+    function handleLogin() {
+  const email = document.getElementById('login-email').value;
+  if (email) {
+    const name = email.split('@')[0] || "Қолданушы";
+    localStorage.setItem('userName', name);
+    
+    const msg = document.getElementById('success-message');
+    msg.textContent = "✅ Сәтті кіру! Жеке кабинетке өтуде...";
+    msg.style.display = 'block';
+    
+    setTimeout(() => {
+      window.location.href = "dashboard.html";
+    }, 1200);
+  } else {
+    alert("Email енгізіңіз");
+  }
+}
+
+    function handleRegister() {
+      const name = document.getElementById('reg-name').value;
+      const email = document.getElementById('reg-email').value;
+      const phone = document.getElementById('reg-phone').value;
+      const pass = document.getElementById('reg-password').value;
+
+      if (name && email && phone && pass.length >= 6) {
+        successMsg.textContent = `✅ Құттықтаймыз, ${name.split(' ')[0]}! Тіркелу сәтті аяқталды.`;
+        successMsg.style.display = 'block';
+        setTimeout(() => {
+          alert("Тіркелу сәтті өтті! Енді кіру формасы арқылы жүйеге кіріңіз.");
+          showTab('login');
+        }, 1800);
+      } else {
+        alert("Барлық өрістерді толтырыңыз және құпия сөз кемінде 6 таңбадан тұрсын.");
+      }
+    }
+  </script>
+</body>
+</html>
