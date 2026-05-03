@@ -48,7 +48,7 @@
     .tab button.active {
       background: white;
       box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-      color: #ff5722;
+      color: #f5b800;
     }
 
     input {
@@ -62,7 +62,7 @@
     .btn {
       width: 100%;
       padding: 16px;
-      background: #ff5722;
+      background: #f5b800;
       color: white;
       border: none;
       border-radius: 50px;
@@ -72,7 +72,7 @@
       cursor: pointer;
       transition: 0.3s;
     }
-    .btn:hover { background: #ff7043; }
+    .btn:hover { background: #f5b800; }
 
     .message {
       margin-top: 20px;
@@ -82,6 +82,16 @@
       font-weight: 600;
       display: none;
     }
+
+    @media(max-width: 480px) {
+  .container {
+    padding: 30px 20px;
+    box-shadow: none;
+    background: transparent;
+  }
+  h1 { font-size: 1.8rem; }
+  input, .btn { font-size: 1rem; padding: 14px; }
+}
   </style>
 </head>
 <body>

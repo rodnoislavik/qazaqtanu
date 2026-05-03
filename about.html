@@ -6,110 +6,100 @@
   <title>Жоба туралы — QazaqTanu</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap');
-    
-    body {
-      font-family: 'Inter', sans-serif;
-      margin: 0;
-      padding: 0;
-      background: #f8f9ff;
-      color: #1a1a1a;
-      line-height: 1.7;
-    }
-    header {
-      padding: 18px 5%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background: white;
-      box-shadow: 0 2px 15px rgba(0,0,0,0.08);
-      position: fixed;
-      width: 100%;
-      top: 0;
-      z-index: 1000;
-    }
-    .logo { font-size: 28px; font-weight: 900; color: #0066ff; text-decoration: none; }
-    nav a { margin: 0 20px; text-decoration: none; color: #333; font-weight: 600; }
-    .btn-group a {
-      padding: 12px 28px;
-      border-radius: 50px;
-      font-weight: 700;
-      text-decoration: none;
-    }
-    .btn-login { background: transparent; color: #0066ff; border: 2.5px solid #0066ff; }
-    .btn-start { background: #ff5722; color: white; }
+    :root{ --blue:#003087; --gold:#f5b800; }
+    *{ margin:0; padding:0; box-sizing:border-box; }
+    body{ font-family:'Inter',sans-serif; background:#f8f9ff; color:#1a1a1a; line-height:1.7; }
 
-    .content {
-      max-width: 1100px;
-      margin: 120px auto 80px;
-      padding: 0 5%;
+    /* HEADER */
+    header{
+      padding:14px 5%; display:flex; justify-content:space-between;
+      align-items:center; background:white; box-shadow:0 2px 15px rgba(0,0,0,0.08);
+      position:fixed; width:100%; top:0; z-index:1000; gap:10px;
     }
-    h1 { font-size: 3.2rem; text-align: center; margin-bottom: 60px; font-weight: 900; }
-    h2 { font-size: 2.2rem; margin: 50px 0 25px; color: #0066ff; }
-    p { font-size: 1.15rem; color: #444; margin-bottom: 25px; }
+    .logo{ font-size:24px; font-weight:900; color:#0066ff; text-decoration:none; flex-shrink:0; }
+    nav{ display:flex; }
+    nav a{ padding:6px 12px; text-decoration:none; color:#333; font-weight:600; font-size:0.9rem; white-space:nowrap; }
+    .header-btns{ display:flex; gap:8px; flex-shrink:0; }
+    .btn{ padding:10px 20px; border-radius:50px; font-weight:700; text-decoration:none; font-size:0.88rem; white-space:nowrap; display:inline-block; }
+    .btn-login{ border:2.5px solid #0066ff; color:#0066ff; background:transparent; }
+    .btn-start{ background:#f5b800; color:white; }
 
-    .features {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 30px;
-      margin: 60px 0;
-    }
-    .feature-card {
-      background: white;
-      padding: 35px;
-      border-radius: 20px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-    }
-    footer {
-      background: #1a1a1a;
-      color: white;
-      text-align: center;
-      padding: 60px 20px;
+    /* HAMBURGER */
+    .hamburger{ display:none; flex-direction:column; gap:5px; cursor:pointer; background:none; border:none; padding:4px; }
+    .hamburger span{ display:block; width:26px; height:2.5px; background:#0066ff; border-radius:2px; }
+
+    /* MOBILE DRAWER */
+    .mobile-nav{ display:none; position:fixed; inset:0; background:rgba(0,48,135,0.97); z-index:1999; flex-direction:column; align-items:center; justify-content:center; gap:28px; }
+    .mobile-nav.open{ display:flex; }
+    .mobile-nav a{ color:white; text-decoration:none; font-size:1.4rem; font-weight:700; }
+    .mobile-nav .btn-start{ background:#f5b800; color:#003087; padding:14px 40px; font-size:1.1rem; }
+    .mobile-nav .btn-login{ border:2.5px solid white; color:white; padding:12px 40px; font-size:1.1rem; background:transparent; }
+    .close-btn{ position:absolute; top:18px; right:5%; font-size:2rem; color:white; cursor:pointer; background:none; border:none; }
+
+    /* CONTENT */
+    .content{ max-width:1100px; margin:100px auto 80px; padding:0 5%; }
+    h1{ font-size:clamp(2rem,6vw,3.2rem); text-align:center; margin-bottom:50px; font-weight:900; }
+    h2{ font-size:clamp(1.4rem,4vw,2.2rem); margin:45px 0 22px; color:#0066ff; }
+    p{ font-size:clamp(0.97rem,2vw,1.15rem); color:#444; margin-bottom:22px; }
+
+    .features{ display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:24px; margin:40px 0; }
+    .feature-card{ background:white; padding:30px; border-radius:20px; box-shadow:0 10px 30px rgba(0,0,0,0.08); }
+    .feature-card h3{ font-size:1.1rem; margin-bottom:10px; }
+
+    ul.plan{ font-size:clamp(0.97rem,2vw,1.15rem); line-height:2.2; color:#444; padding-left:20px; }
+
+    footer{ background:#1a1a1a; color:white; text-align:center; padding:60px 5%; }
+    footer p{ margin-bottom:10px; }
+
+    @media(max-width:768px){
+      nav,.header-btns{ display:none; }
+      .hamburger{ display:flex; }
     }
   </style>
 </head>
 <body>
-
   <header>
     <a href="index.html" class="logo">QazaqTanu</a>
     <nav>
       <a href="index.html">Басты бет</a>
-      <a href="about.html">Жоба туралы</a>
-      <a href="login.html">Кіру</a>
+      <a href="about.html"><strong>Жоба туралы</strong></a>
+      <a href="history.html">Тарих және тұлғалар</a>
     </nav>
-    <div class="btn-group">
-      <a href="login.html" class="btn-group btn-login">Кіру</a>
-      <a href="http://t.me/KazakTanu_bot" target="_blank" class="btn-group btn-start">Ботқа өту</a>
+    <div class="header-btns">
+      <a href="login.html" class="btn btn-login">Кіру</a>
+      <a href="https://t.me/Qazaqtany_bot" target="_blank" class="btn btn-start">Ботқа өту</a>
     </div>
+    <button class="hamburger" onclick="openMenu()"><span></span><span></span><span></span></button>
   </header>
+
+  <div class="mobile-nav" id="mobileNav">
+    <button class="close-btn" onclick="closeMenu()">✕</button>
+    <a href="index.html" onclick="closeMenu()">Басты бет</a>
+    <a href="about.html" onclick="closeMenu()">Жоба туралы</a>
+    <a href="history.html" onclick="closeMenu()">Тарих және тұлғалар</a>
+    <a href="login.html" class="btn btn-login" onclick="closeMenu()">Кіру</a>
+    <a href="https://t.me/Qazaqtany_bot" target="_blank" class="btn btn-start" onclick="closeMenu()">Ботқа өту</a>
+  </div>
 
   <div class="content">
     <h1>Жоба туралы</h1>
-    
+
     <h2>Біздің миссия</h2>
     <p>QazaqTanu — қазақ тілін, тарихын және мәдениетін цифрлық форматта дәріптеуге арналған бірегей платформа.</p>
     <p>Біз тіл үйренуді кедергі емес, күнделікті қызықты әдетке айналдыруды мақсат етеміз.</p>
 
     <h2>Негізгі функциялар</h2>
     <div class="features">
-      <div class="feature-card">
-        <h3>📇 Карточкалар</h3>
-        <p>Көрнекі құралдар арқылы сөздік қорды байыту.</p>
-      </div>
-      <div class="feature-card">
-        <h3>🎮 Ойындар</h3>
-        <p>Интерактивті кроссвордтар мен викториналар.</p>
-      </div>
-      <div class="feature-card">
-        <h3>💬 Диалогтар</h3>
-        <p>Нақты өмірдегі жағдайларды аудиомен үйрену.</p>
-      </div>
+      <div class="feature-card"><h3>📇 Карточкалар</h3><p>Көрнекі құралдар арқылы сөздік қорды байыту.</p></div>
+      <div class="feature-card"><h3>🎮 Ойындар</h3><p>Интерактивті кроссвордтар мен викториналар.</p></div>
+      <div class="feature-card"><h3>💬 Диалогтар</h3><p>Нақты өмірдегі жағдайларды аудиомен үйрену.</p></div>
     </div>
 
     <h2>Мәдени интеграция</h2>
     <p>Тіл — бұл тек қарым-қатынас құралы емес, бұл халықтың жаны. Біз ботымызда тілді үйрете отырып, қазақ елінің кең даласы мен бай тарихын таныстырамыз.</p>
 
     <h2>Болашақ жоспарлар</h2>
-    <ul style="font-size: 1.15rem; line-height: 2; color: #444;">
+    <ul class="plan">
       <li>AI Mentor — жасанды интеллект арқылы тілді талдау</li>
       <li>Толыққанды мобильді қосымша (App Store / Play Market)</li>
       <li>Тіл үйренушілердің жабық қауымдастығы (Community)</li>
@@ -117,10 +107,14 @@
   </div>
 
   <footer>
-    <p style="font-size: 1.8rem; margin-bottom: 10px;">QazaqTanu</p>
+    <p style="font-size:1.8rem;margin-bottom:10px;">QazaqTanu</p>
     <p>Қазақ тілін, тарихын және мәдениетін бірге дамайық!</p>
-    <p style="margin-top: 40px; opacity: 0.7;">© 2026 QazaqTanu. Барлық құқықтар қорғалған.</p>
+    <p style="margin-top:30px;opacity:0.7;">© 2026 QazaqTanu. Барлық құқықтар қорғалған.</p>
   </footer>
 
+  <script>
+    function openMenu(){ document.getElementById('mobileNav').classList.add('open'); document.body.style.overflow='hidden'; }
+    function closeMenu(){ document.getElementById('mobileNav').classList.remove('open'); document.body.style.overflow=''; }
+  </script>
 </body>
 </html>

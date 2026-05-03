@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Қазақстан тарихы және маңызды тұлғалар | QazaqTanu</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap');
+
+    body {
+      font-family: 'Inter', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f8f9ff;
+      color: #1a1a1a;
+      line-height: 1.6;
+    }
+    header {
+      background: white;
+      padding: 20px 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+    .hamburger span { display: block; width: 26px; height: 2.5px; background: #0066ff; border-radius: 2px; }
+
+    .mobile-nav { display: none; position: fixed; inset: 0; background: rgba(0,48,135,0.97); z-index: 1999; flex-direction: column; align-items: center; justify-content: center; gap: 28px; }
+    .mobile-nav.open { display: flex; }
+    .mobile-nav a { color: white; text-decoration: none; font-size: 1.4rem; font-weight: 700; }
+    .close-btn { position: absolute; top: 18px; right: 5%; font-size: 2rem; color: white; cursor: pointer; background: none; border: none; }
+
+    @media(max-width: 768px) {
+      nav, .btn-group { display: none; }
+      .hamburger { display: flex; }
+      .hero-history h1 { font-size: 2.4rem; }
+      h2 { font-size: 2rem; margin-bottom: 30px; }
+      .personalities { grid-template-columns: 1fr; }
+    }
+
+    
+    .logo {
+      font-size: 32px;
+      font-weight: 900;
+      color: #0066ff;
+    }
+    nav a {
+      margin: 0 15px;
+      text-decoration: none;
+      color: #333;
+      font-weight: 600;
+    }
+    .hero-history {
+      background: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)), url('https://i.ytimg.com/vi/JVRyk-jrSyQ/maxresdefault.jpg?sqp=-oaymwEmCIAKENAF8quKqQMa8AEB-AH-BIAC4AOKAgwIABABGHIgSCg4MA8=&amp;rs=AOn4CLDu1g2ZG6Vhf5dVWXLDMNenA4BCpw') center/cover no-repeat;
+      color: white;
+      text-align: center;
+      padding: 160px 20px 100px;
+    }
+    .hero-history h1 {
+      font-size: 3.8rem;
+      margin: 0 0 20px;
+    }
+    section {
+      padding: 90px 5%;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    h2 {
+      font-size: 2.8rem;
+      text-align: center;
+      margin-bottom: 60px;
+      color: #0066ff;
+    }
+    .personalities {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 30px;
+    }
+
+
+    .card {
+      background: white;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      transition: all 0.3s;
+    }
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+    }
+    .card img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+    }
+    .card-content {
+      padding: 25px;
+    }
+    .card h3 {
+      margin: 0 0 10px;
+      color: #0066ff;
+    }
+    .year {
+      color: #f5b800;
+      font-weight: 700;
+      font-size: 0.95rem;
+    }
+    footer {
+      background: #1a1a1a;
+      color: white;
+      text-align: center;
+      padding: 60px 20px;
+    }
+    .btn-group a {
+      padding: 12px 28px;
+      border-radius: 50px;
+      font-weight: 700;
+      text-decoration: none;
+    }
+    .btn-login { background: transparent; color: #0066ff; border: 2.5px solid #0066ff; }
+    .btn-start { background: #f5b800; color: white; }
+    .back-btn {
+      display: inline-block;
+      margin: 30px 0;
+      padding: 12px 30px;
+      background: #0066ff;
+      color: white;
+      text-decoration: none;
+      border-radius: 50px;
+      font-weight: 600;
+    }
+    @media(max-width:768px){
+      nav,.header-btns{ display:none; }
+      .hamburger{ display:flex; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">QazaqTanu</div>
+    <nav>
+      <a href="index.html">Басты бет</a>
+      <a href="about.html">Жоба туралы</a>
+      <a href="history.html"><strong>Тарих және тұлғалар</strong></a>
+    </nav>
+    <div class="btn-group">
+      <a href="login.html" class="btn-group btn-login">Кіру</a>
+      <a href="https://t.me/Qazaqtany_bot" target="_blank" class="btn-group btn-start">Ботқа өту</a>
+    </div>
+    <button class="hamburger" onclick="openMenu()"><span></span><span></span><span></span></button>
+  </header>
+  <div class="mobile-nav" id="mobileNav">
+    <button class="close-btn" onclick="closeMenu()">✕</button>
+    <a href="index.html" onclick="closeMenu()">Басты бет</a>
+    <a href="about.html" onclick="closeMenu()">Жоба туралы</a>
+    <a href="history.html" onclick="closeMenu()">Тарих және тұлғалар</a>
+    <a href="login.html" class="btn btn-login" onclick="closeMenu()">Кіру</a>
+    <a href="https://t.me/Qazaqtany_bot" target="_blank" class="btn btn-start" onclick="closeMenu()">Ботқа өту</a>
+  </div>
+
+  <section class="hero-history">
+    <h1>Қазақстан тарихы</h1>
+    <p style="font-size: 1.5rem; max-width: 700px; margin: 0 auto;">
+      Ұлы тұлғалар, маңызды оқиғалар және мәдени мұра
+    </p>
+  </section>
+
+  <section>
+    <h2>Маңызды тұлғалар</h2>
+    <div class="personalities">
+
+      <div class="card">
+        <img src="_gluster_2020_3_30_5c5639a3a5810cb6951e04850dbb3160_original.127147.jpg" alt="Әл-Фараби">
+        <div class="card-content">
+          <span class="year">870 — 950 жж.</span>
+          <h3>Әбу Насыр әл-Фараби</h3>
+          <p>«Шығыстың Аристотелі». Философ, математик, музыкант және ғалым. Орта ғасырдағы ең ұлы ойшылдардың бірі.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="maxresdefault (1).jpg" alt="Абай">
+        <div class="card-content">
+          <span class="year">1845 — 1904</span>
+          <h3>Абай Құнанбайұлы</h3>
+          <p>Ұлы ақын, ағартушы, философ. Қазақ әдебиетінің классигі, «Қара сөздер» авторы.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="1289c6cedcfad827de2f3b19511f578d.jpg" alt="Шоқан">
+        <div class="card-content">
+          <span class="year">1835 — 1865</span>
+          <h3>Шоқан Уәлиханов</h3>
+          <p>Ғалым, саяхатшы, этнограф. Қазақ ғылымының негізін қалаушы.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="81ee1ff5c12d40ac.jpeg" alt="Кенесары">
+        <div class="card-content">
+          <span class="year">1802 — 1847</span>
+          <h3>Кенесары Қасымұлы</h3>
+          <p>Қазақ хандығының соңғы ханы. Ұлт-азаттық көтерілістің көшбасшысы, батыр.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="1709197424_news_b.jpeg" alt="Жамбыл">
+        <div class="card-content">
+          <span class="year">1846 — 1945</span>
+          <h3>Жамбыл Жабаев</h3>
+          <p>Халық ақыны, домбырашы. Қазақ фольклорының аңызы.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="1200_0_deqIlKiVMF9gQVCbFEDkW9tXlvkYA5EfDujq9JU7.jpg" alt="Тәуелсіздік">
+        <div class="card-content">
+          <span class="year">16 желтоқсан 1991</span>
+          <h3>Тәуелсіздік</h3>
+          <p>Қазақстан Республикасының тәуелсіздік алған күні. Егеменді мемлекеттің бастауы.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section style="background: #f0f4ff;">
+    <h2>Қазақстан тарихының негізгі кезеңдері</h2>
+    <div class="personalities">
+      <div class="card">
+        <div class="card-content">
+          <h3>Ұлы Дала</h3>
+          <p>Қазақ жері — ежелгі өркениеттердің, Ұлы Жібек жолының орталығы.</p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-content">
+          <h3>Қазақ хандығы</h3>
+          <p>XV ғасырда құрылған қазақ мемлекеттілігінің алтын дәуірі.</p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-content">
+          <h3>XX ғасыр</h3>
+          <p>Ашаршылық, репрессиялар, Ұлы Отан соғысы және Тәуелсіздік.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div style="text-align:center; margin:40px 0;">
+    <a href="index.html" class="back-btn">← Басты бетке оралу</a>
+  </div>
+
+  <footer>
+    <p><strong>QazaqTanu</strong> — Қазақ тілін, тарихын және мәдениетін бірге таниық!</p>
+    <p>© 2026 Барлық құқықтар қорғалған</p>
+  </footer>
+    <script>
+    function openMenu(){ document.getElementById('mobileNav').classList.add('open'); document.body.style.overflow='hidden'; }
+    function closeMenu(){ document.getElementById('mobileNav').classList.remove('open'); document.body.style.overflow=''; }
+  </script>
+</body>
+</html>

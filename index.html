@@ -6,154 +6,107 @@
   <title>QazaqTanu — Қазақ тілін үйрен</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap');
+    :root { --blue:#003087; --gold:#f5b800; }
+    *{ margin:0; padding:0; box-sizing:border-box; }
+    body{ font-family:'Inter',sans-serif; background:#f8f9ff; color:#1a1a1a; }
 
-    :root {
-      --blue: #003087;
-      --gold: #f5b800;
-      --green: #006400;
+    /* HEADER */
+    header{
+      position:fixed; top:0; width:100%;
+      background:white; box-shadow:0 3px 15px rgba(0,0,0,0.1);
+      padding:14px 5%; display:flex; justify-content:space-between;
+      align-items:center; z-index:1000; gap:10px;
     }
+    .logo{ font-size:24px; font-weight:900; color:var(--blue); text-decoration:none; flex-shrink:0; }
+    nav{ display:flex; gap:0; flex-shrink:1; }
+    nav a{ padding:6px 12px; color:#222; text-decoration:none; font-weight:600; font-size:0.9rem; white-space:nowrap; }
+    .header-btns{ display:flex; gap:8px; flex-shrink:0; }
+    .btn{ padding:10px 20px; border-radius:50px; font-weight:700; text-decoration:none; font-size:0.88rem; white-space:nowrap; display:inline-block; }
+    .btn-login{ border:2.5px solid var(--blue); color:var(--blue); }
+    .btn-start{ background:var(--gold); color:var(--blue); }
 
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    /* HAMBURGER */
+    .hamburger{ display:none; flex-direction:column; gap:5px; cursor:pointer; background:none; border:none; padding:4px; }
+    .hamburger span{ display:block; width:26px; height:2.5px; background:var(--blue); border-radius:2px; }
 
-    body {
-      font-family: 'Inter', sans-serif;
-      background: #f8f9ff;
-      color: #1a1a1a;
+    /* MOBILE DRAWER */
+    .mobile-nav{
+      display:none; position:fixed; inset:0;
+      background:rgba(0,48,135,0.97); z-index:1999;
+      flex-direction:column; align-items:center; justify-content:center; gap:28px;
     }
+    .mobile-nav.open{ display:flex; }
+    .mobile-nav a{ color:white; text-decoration:none; font-size:1.4rem; font-weight:700; }
+    .mobile-nav .btn-start{ background:var(--gold); color:var(--blue); padding:14px 40px; font-size:1.1rem; }
+    .mobile-nav .btn-login{ border:2.5px solid white; color:white; padding:12px 40px; font-size:1.1rem; }
+    .close-btn{ position:absolute; top:18px; right:5%; font-size:2rem; color:white; cursor:pointer; background:none; border:none; line-height:1; }
 
-    header {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      background: white;
-      box-shadow: 0 3px 15px rgba(0,0,0,0.1);
-      padding: 16px 5%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      z-index: 1000;
+    /* HERO */
+    .hero{
+      min-height:100vh; padding:130px 5% 80px;
+      display:flex; align-items:center; gap:40px; flex-wrap:wrap;
+      background:linear-gradient(135deg,#e6f0ff,#f0f8e8);
     }
+    .hero-content{ max-width:560px; flex:1 1 300px; }
+    .hero h1{ font-size:clamp(2.2rem,6vw,4.5rem); font-weight:900; line-height:1.05; color:var(--blue); }
+    .hero h1 span{ color:var(--gold); }
+    .hero p{ font-size:clamp(1rem,2.2vw,1.25rem); margin:22px 0 38px; color:#333; max-width:500px; }
+    .btn-hero{ padding:clamp(12px,2vw,16px) clamp(28px,4vw,44px); font-size:clamp(1rem,2vw,1.25rem); }
+    .illustration{ flex:1 1 240px; max-width:480px; margin:0 auto; }
+    .illustration img{ width:100%; display:block; }
 
-    .logo {
-      font-size: 29px;
-      font-weight: 900;
-      color: var(--blue);
-      text-decoration: none;
-    }
+    /* FEATURES */
+    section{ padding:80px 5%; text-align:center; }
+    h2{ font-size:clamp(1.8rem,5vw,3rem); color:var(--blue); margin-bottom:50px; font-weight:900; }
+    .features{ display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:24px; max-width:1100px; margin:0 auto; }
+    .feature-card{ background:white; padding:38px 26px; border-radius:20px; box-shadow:0 10px 30px rgba(0,48,135,0.1); }
+    .feature-card h3{ font-size:1.15rem; margin-bottom:12px; }
+    .feature-card p{ color:#555; font-size:0.97rem; }
 
-    nav a {
-      margin: 0 20px;
-      color: #222;
-      text-decoration: none;
-      font-weight: 600;
-    }
+    /* FOOTER */
+    footer{ background:var(--blue); color:white; padding:60px 5% 40px; text-align:center; }
+    footer p{ margin-bottom:10px; }
 
-    .btn {
-      padding: 11px 26px;
-      border-radius: 50px;
-      font-weight: 700;
-      text-decoration: none;
-      transition: 0.3s;
-    }
-
-    .btn-login {
-      border: 2.5px solid var(--blue);
-      color: var(--blue);
-    }
-
-    .btn-start {
-      background: var(--gold);
-      color: var(--blue);
-    }
-
-    .hero {
-      min-height: 100vh;
-      padding: 160px 5% 100px;
-      display: flex;
-      align-items: center;
-      background: linear-gradient(135deg, #e6f0ff, #f0f8e8);
-      position: relative;
-    }
-
-    .hero h1 {
-      font-size: clamp(2.8rem, 7.5vw, 4.6rem);
-      font-weight: 900;
-      line-height: 1.05;
-      color: var(--blue);
-    }
-
-    .hero h1 span {
-      color: var(--gold);
-    }
-
-    .hero p {
-      font-size: 1.3rem;
-      max-width: 520px;
-      margin: 25px 0 40px;
-      color: #333;
-    }
-
-    .illustration {
-      position: absolute;
-      right: 6%;
-      bottom: 0;
-      width: 45%;
-      max-width: 520px;
-    }
-
-    section { padding: 110px 5%; text-align: center; }
-    h2 { font-size: clamp(2.3rem, 6vw, 3.2rem); color: var(--blue); margin-bottom: 60px; font-weight: 900; }
-
-    .features {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 30px;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .feature-card {
-      background: white;
-      padding: 45px 30px;
-      border-radius: 20px;
-      box-shadow: 0 10px 30px rgba(0,48,135,0.1);
-    }
-
-    footer {
-      background: var(--blue);
-      color: white;
-      padding: 70px 5% 40px;
-      text-align: center;
-    }
-
-    @media (max-width: 992px) {
-      .illustration { position: relative; width: 80%; margin: 60px auto 0; right: auto; }
-      .hero { flex-direction: column; text-align: center; padding-top: 180px; }
+    /* MOBILE */
+    @media(max-width:768px){
+      nav,.header-btns{ display:none; }
+      .hamburger{ display:flex; }
+      .hero{ flex-direction:column; text-align:center; padding-top:90px; min-height:auto; padding-bottom:60px; }
+      .hero-content{ max-width:100%; }
+      .illustration{ max-width:75%; }
     }
   </style>
 </head>
 <body>
-
   <header>
     <a href="index.html" class="logo">QazaqTanu</a>
     <nav>
-      <a href="index.html">Басты бет</a>
+      <a href="index.html"><strong>Басты бет</strong></a>
       <a href="about.html">Жоба туралы</a>
-      <a href="login.html">Кіру</a>
+      <a href="history.html">Тарих және тұлғалар</a>
     </nav>
-    <div>
+    <div class="header-btns">
       <a href="login.html" class="btn btn-login">Кіру</a>
-      <a href="http://t.me/KazakTanu_bot" target="_blank" class="btn btn-start">Ботқа өту</a>
+      <a href="https://t.me/Qazaqtany_bot" target="_blank" class="btn btn-start">Ботқа өту</a>
     </div>
+    <button class="hamburger" onclick="openMenu()"><span></span><span></span><span></span></button>
   </header>
 
+  <div class="mobile-nav" id="mobileNav">
+    <button class="close-btn" onclick="closeMenu()">✕</button>
+    <a href="index.html" onclick="closeMenu()">Басты бет</a>
+    <a href="about.html" onclick="closeMenu()">Жоба туралы</a>
+    <a href="history.html" onclick="closeMenu()">Тарих және тұлғалар</a>
+    <a href="login.html" class="btn btn-login" onclick="closeMenu()">Кіру</a>
+    <a href="https://t.me/Qazaqtany_bot" target="_blank" class="btn btn-start" onclick="closeMenu()">Ботқа өту</a>
+  </div>
+
   <section class="hero">
-    <div class="hero-content" style="max-width: 580px;">
+    <div class="hero-content">
       <h1>ҚАЗАҚ ТІЛІН<br>ҮЙРЕН <span>ЕҢ ЖАҚСЫ</span><br>ФОРМАТТА</h1>
       <p>QazaqTanu — қазақ тілін, тарихын және мәдениетін қызықты әрі заманауи форматта үйренуге арналған интерактивті платформа.</p>
-      <a href="http://t.me/KazakTanu_bot" target="_blank" class="btn btn-start" style="padding: 16px 42px; font-size: 1.3rem;">Тегін бастау →</a>
+      <a href="https://t.me/Qazaqtany_bot" target="_blank" class="btn btn-start btn-hero">Тегін бастау →</a>
     </div>
-
     <div class="illustration">
       <img src="image.png" alt="QazaqTanu">
     </div>
@@ -169,10 +122,14 @@
   </section>
 
   <footer>
-    <p style="font-size: 2.1rem; font-weight: 700;">QazaqTanu</p>
+    <p style="font-size:1.9rem;font-weight:700;">QazaqTanu</p>
     <p>Қазақ тілін, тарихын және мәдениетін бірге дамайық!</p>
-    <p style="margin-top: 40px; opacity: 0.85;">© 2026 QazaqTanu. Барлық құқықтар қорғалған.</p>
+    <p style="margin-top:30px;opacity:0.85;">© 2026 QazaqTanu. Барлық құқықтар қорғалған.</p>
   </footer>
 
+  <script>
+    function openMenu(){ document.getElementById('mobileNav').classList.add('open'); document.body.style.overflow='hidden'; }
+    function closeMenu(){ document.getElementById('mobileNav').classList.remove('open'); document.body.style.overflow=''; }
+  </script>
 </body>
 </html>
