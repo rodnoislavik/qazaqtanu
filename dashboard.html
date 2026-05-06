@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Жеке кабинет — QazaqTanu</title>
+  <title>Жеке кабинет - QazaqTanu</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap');
 
@@ -124,15 +124,14 @@
 
     <div class="card">
       <h2>Соңғы жетістіктер</h2>
-      <p>🎉 "Тарих білгірі" — 5 викторина қатарынан дұрыс өткізілді</p>
-      <p>🏆 "Сөз шебері" — 100 жаңа сөз үйренді</p>
+      <p>🎉 "Тарих білгірі" - 5 викторина қатарынан дұрыс өткізілді</p>
+      <p>🏆 "Сөз шебері" - 100 жаңа сөз үйренді</p>
     </div>
 
     <button onclick="logout()" class="btn logout" style="margin-top: 20px;">Шығу</button>
   </div>
 
   <script>
-    // Получаем данные из localStorage (если были сохранены при регистрации/входе)
     const savedName = localStorage.getItem('userName') || "Айгерім";
     document.getElementById('username').textContent = savedName;
     document.getElementById('user-name').textContent = savedName + "!";
